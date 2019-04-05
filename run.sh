@@ -172,12 +172,11 @@ echo "Pentaho PDI server $cur_srv is up and running on port ${FINAL_PORT}"
 ### MAKE AND RUN MASTER OR SLAVE ###
 ####################################
 copy_files=`ls | grep -iv run.sh | grep -iv pentaho.conf | grep -iv "^master\|^slave" `
-
+FINAL_PORT=$SERVER_PORT
 echo  "Start to prepare and run all services"
 
 if [ $MASTER_NUMBER -ge 1 ]; then
 
-    FINAL_PORT=$SERVER_PORT
     echo -e "\n### ...GENERATE MASTERS... ###"
 
     for i in $(seq 1 $MASTER_NUMBER)
