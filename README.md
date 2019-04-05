@@ -3,6 +3,11 @@ Docker installation for Pentaho PDI with clustering
 
 This is dockerfile for running slave or masters of Pentaho PDI cluster and the tool run.sh for running multiple nodes of cluster
 
+This is prepeared with jdbc drivers for:
+- MSSQL
+- PostgreSQL
+
+
 You need docker and docker-compose tu run it.
 
 For running make simple steps:
