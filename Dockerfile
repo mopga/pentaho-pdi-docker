@@ -32,7 +32,7 @@ RUN chmod +x ${PDI_DIR}/docker-entrypoint.sh
 # Update JDBC Drivers in Pentaho DI
 # Update Postgres JDBC Driver
 RUN echo $PDI_DIR
-RUN rm -f ${PDI_DIR}/lib/postgre*.jar && cp -rv ${SERVICE_HOME}/jdbc-libs/postgresql-${POSTGRESQL_DRIVER_VERSION}.jar ${PDI_DIR}/
+RUN rm -f ${PDI_DIR}/lib/postgre*.jar && cp -rv ${SERVICE_HOME}/jdbc-libs/postgresql-${POSTGRESQL_DRIVER_VERSION}.jar ${PDI_DIR}/lib/
 # Update MSSQL JDBC Driver
 RUN tar -zxvf ${SERVICE_HOME}/jdbc-libs/sqljdbc_7.2.1.0_enu.tar.gz -C ${SERVICE_HOME}/jdbc-libs/ \
 	&& cp ${SERVICE_HOME}/jdbc-libs/sqljdbc_7.2/enu/mssql-jdbc-7.2.1.jre8.jar ${PDI_DIR}/lib/ \
