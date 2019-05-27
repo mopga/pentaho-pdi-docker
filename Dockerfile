@@ -16,7 +16,6 @@ WORKDIR ${SERVICE_HOME}
 # Prepare SERVICE files
 ENV PDI_DIR=${SERVICE_HOME}/data-integration
 COPY ./jdbc-libs jdbc-libs/
-RUN mkdir ${PDI_DIR}/FilesRepository
 
 # Download latest Postgres JDBC Driver
 RUN wget --progress=dot:giga https://jdbc.postgresql.org/download/postgresql-${POSTGRESQL_DRIVER_VERSION}.jar -P ${SERVICE_HOME}/jdbc-libs/
@@ -45,5 +44,6 @@ RUN chown -R $PDI_USER:$PDI_USER ${SERVICE_HOME}/ && \
 
 USER $PDI_USER
 WORKDIR ${PDI_DIR}
+RUN mkdir ${PDI_DIR}/FilesRepository
 ENTRYPOINT ["./docker-entrypoint.sh"]
 EXPOSE $SERVER_PORT
