@@ -3,8 +3,8 @@ FROM java:8-jre
 
 ENV SERVICE_HOME=/home/pdi \
     POSTGRESQL_DRIVER_VERSION=42.2.5 \
-    PDI_VERSION=8.1 \
-    PDI_BUILD=8.1.0.0-365 \
+    PDI_VERSION=8.0 \
+    PDI_BUILD=8.0.0.0-28 \
     PDI_USER=pdi
 
 # add non root user to run pdi as
@@ -16,6 +16,7 @@ WORKDIR ${SERVICE_HOME}
 # Prepare SERVICE files
 ENV PDI_DIR=${SERVICE_HOME}/data-integration
 COPY ./jdbc-libs jdbc-libs/
+RUN mkdir ${PDI_DIR}/files-rep
 
 # Download latest Postgres JDBC Driver
 RUN wget --progress=dot:giga https://jdbc.postgresql.org/download/postgresql-${POSTGRESQL_DRIVER_VERSION}.jar -P ${SERVICE_HOME}/jdbc-libs/

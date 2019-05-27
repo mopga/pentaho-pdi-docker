@@ -70,6 +70,14 @@ gen_volumes() {
     else 
 	echo -e "${FUNCNAME[ 0 ]} Already done..skipping..\r"
     fi
+    if [ ! -d files-rep ]; then
+	echo -e "Generating FileRepository volumes for server.. \n"
+	mkdir -p file-rep
+	chown -R :1000 file-rep/
+	chmod -R 775 file-rep/
+    else 
+	echo -e "${FUNCNAME[ 0 ]} Already done FileRepository..skipping..\r"
+    fi
 }
 
 gen_master() {
@@ -86,6 +94,7 @@ services:
     volumes:
       - ./log/tmp:/tmp:rw
       - ./log/pdi:/home/pdi/data-integration/logs:rw
+      - ./file-rep:/home/pdi/data-integration/files-rep:rw
     environment:
       # uncomment below if you want to see the generated admin password
       #DEBUG: Y
