@@ -16,7 +16,7 @@ WORKDIR ${SERVICE_HOME}
 # Prepare SERVICE files
 ENV PDI_DIR=${SERVICE_HOME}/data-integration
 COPY ./jdbc-libs jdbc-libs/
-RUN mkdir ${PDI_DIR}/files-rep
+RUN mkdir ${PDI_DIR}/FilesRepository
 
 # Download latest Postgres JDBC Driver
 RUN wget --progress=dot:giga https://jdbc.postgresql.org/download/postgresql-${POSTGRESQL_DRIVER_VERSION}.jar -P ${SERVICE_HOME}/jdbc-libs/
