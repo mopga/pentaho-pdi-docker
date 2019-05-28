@@ -3,8 +3,8 @@ FROM java:8-jre
 
 ENV SERVICE_HOME=/home/pdi \
     POSTGRESQL_DRIVER_VERSION=42.2.5 \
-    PDI_VERSION=8.1 \
-    PDI_BUILD=8.1.0.0-365 \
+    PDI_VERSION=8.0 \
+    PDI_BUILD=8.0.0.0-28 \
     PDI_USER=pdi
 
 # add non root user to run pdi as
@@ -44,5 +44,6 @@ RUN chown -R $PDI_USER:$PDI_USER ${SERVICE_HOME}/ && \
 
 USER $PDI_USER
 WORKDIR ${PDI_DIR}
+RUN mkdir ${PDI_DIR}/FilesRepository
 ENTRYPOINT ["./docker-entrypoint.sh"]
 EXPOSE $SERVER_PORT
